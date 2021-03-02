@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810EC1F825EEB162005C3D8A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EC1F725EEB162005C3D8A /* Card.swift */; };
+		810EC1FA25EEB2DB005C3D8A /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EC1F925EEB2DB005C3D8A /* Deck.swift */; };
+		810EC1FC25EEBD35005C3D8A /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EC1FB25EEBD35005C3D8A /* Hand.swift */; };
 		817342A825E8221D00404587 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817342A725E8221D00404587 /* AppDelegate.swift */; };
 		817342AA25E8221D00404587 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817342A925E8221D00404587 /* SceneDelegate.swift */; };
 		817342AC25E8221D00404587 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817342AB25E8221D00404587 /* ContentView.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		810EC1F725EEB162005C3D8A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		810EC1F925EEB2DB005C3D8A /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		810EC1FB25EEBD35005C3D8A /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
 		817342A425E8221D00404587 /* CardFlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardFlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		817342A725E8221D00404587 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		817342A925E8221D00404587 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +65,9 @@
 				817342A725E8221D00404587 /* AppDelegate.swift */,
 				817342A925E8221D00404587 /* SceneDelegate.swift */,
 				817342AB25E8221D00404587 /* ContentView.swift */,
+				810EC1F725EEB162005C3D8A /* Card.swift */,
+				810EC1F925EEB2DB005C3D8A /* Deck.swift */,
+				810EC1FB25EEBD35005C3D8A /* Hand.swift */,
 				817342AD25E8221E00404587 /* Assets.xcassets */,
 				817342B225E8221E00404587 /* LaunchScreen.storyboard */,
 				817342B525E8221E00404587 /* Info.plist */,
@@ -148,7 +157,10 @@
 			files = (
 				817342A825E8221D00404587 /* AppDelegate.swift in Sources */,
 				817342AA25E8221D00404587 /* SceneDelegate.swift in Sources */,
+				810EC1FC25EEBD35005C3D8A /* Hand.swift in Sources */,
+				810EC1FA25EEB2DB005C3D8A /* Deck.swift in Sources */,
 				817342AC25E8221D00404587 /* ContentView.swift in Sources */,
+				810EC1F825EEB162005C3D8A /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
