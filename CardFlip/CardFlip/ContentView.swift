@@ -9,23 +9,38 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var flipCard: FlipCard
+    
     var body: some View {
         VStack {
             HStack {
-                Image("2C")
+                Image(flipCard.get(index: 0).face)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                Image("2D")
+                    .onTapGesture {
+                        self.flipCard.tap(index: 0)
+                    }
+                Image(flipCard.get(index: 1).face)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .onTapGesture {
+                        self.flipCard.tap(index: 1)
+                    }
             }
             HStack {
-                Image("2H")
+                Image(flipCard.get(index: 2).face)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                Image("2S")
+                    .onTapGesture {
+                        self.flipCard.tap(index: 2)
+                    }
+                Image(flipCard.get(index: 3).face)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .onTapGesture {
+                        self.flipCard.tap(index: 3)
+                    }
             }
         }
         .padding()
@@ -34,6 +49,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(flipCard: FlipCard())
     }
 }

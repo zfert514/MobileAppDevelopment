@@ -37,4 +37,13 @@ struct Deck {
         return deck[index]
     }
     
+    mutating func mark(inUse: Bool, card: Card) {
+        for i in 0..<deck.count {
+            if deck[i].face == card.face {
+                deck[i].inUse = inUse
+                break
+            }
+        }
+    }
+    
 }

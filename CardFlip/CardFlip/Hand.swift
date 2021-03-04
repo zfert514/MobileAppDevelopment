@@ -12,26 +12,13 @@ struct Hand {
     
     var hand = Array<Card>()
     
-    init() {
-        
-    }
-    
     mutating func add(card: Card) {
         hand.append(card)
     }
     
-    mutating func remove(card: Card) {
-        var which = -1
-        
-        for i in 0..<hand.count {
-            if(hand[i].face == card.face) {
-                which = i
-            }
-        }
-        
-        if which >= 0 {
-            hand[which].inUse = false
-            hand.remove(at: which)
-        }
+    mutating func replace(index: Int, newCard: Card) {
+        print("replacing \(hand[index])")
+        hand[index] = newCard
     }
+    
 }
