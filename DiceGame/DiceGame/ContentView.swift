@@ -9,55 +9,90 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var diceGame: DiceGame
+    
     var body: some View {
-        HStack{
-            VStack(alignment: .leading){
-                Text("2")
-                Text("3")
-                Text("4")
-                Text("5")
-                Text("6")
-                Text("7")
-                Text("8")
-                Text("9")
-                Text("10")
-                Text("11")
-            }
-            VStack(alignment: .trailing){
-                Image("dice-six-faces-five")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                Image("dice-six-faces-one")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                Image("dice-six-faces-six")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                Image("dice-six-faces-two")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                Image("dice-six-faces-three")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                    Text("Roll Dice")
+        VStack {
+            HStack {
+                VStack {
+                    Text("2")
                         .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)
+                        .bold()
+                    Text("3")
+                        .font(.title)
+                        .bold()
+                    Text("4")
+                        .font(.title)
+                        .bold()
+                    Text("5")
+                        .font(.title)
+                        .bold()
+                    Text("6")
+                        .font(.title)
+                        .bold()
+                    Text("7")
+                        .font(.title)
+                        .bold()
+                    Text("8")
+                        .font(.title)
+                        .bold()
+                    Text("9")
+                        .font(.title)
+                        .bold()
+                    Text("10")
+                        .font(.title)
+                        .bold()
+                    Text("11")
+                        .font(.title)
+                        .bold()
                 }
-                .padding(5.0)
-                .background(Color.clear)
-                .cornerRadius(/*@START_MENU_TOKEN@*/5.0/*@END_MENU_TOKEN@*/)
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/4/*@END_MENU_TOKEN@*/)
+                .padding()
+                Spacer()
+                VStack {
+                    DieImage(diceGame: diceGame, index: 0)
+                    DieImage(diceGame: diceGame, index: 1)
+                    DieImage(diceGame: diceGame, index: 2)
+                    DieImage(diceGame: diceGame, index: 3)
+                    DieImage(diceGame: diceGame, index: 4)
+                }
+                .padding()
             }
-            .padding()
+            Button(action: {
+                diceGame.rollDice()
+            }) {
+                Text("Roll Dice")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                    .padding(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.black, lineWidth: 3))
+            }
         }
     }
 }
 
+struct DieImage: View {
+    
+    @ObservedObject var diceGame: DiceGame
+    var index: Int
+    
+    var body: some View {
+        Image(diceGame.get(index: index).name)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .colorMultiply(diceGame.getColor(index: index))
+            .onTapGesture {
+                self.diceGame.tap(index: index)
+            }
+    }
+}
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(diceGame: DiceGame())
     }
 }
