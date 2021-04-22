@@ -11,5 +11,6 @@ import Foundation
 struct Face {
     
     var name: String
+    var value: Int
     
 }

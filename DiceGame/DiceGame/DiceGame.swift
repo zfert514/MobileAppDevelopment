@@ -16,6 +16,7 @@ class DiceGame: ObservableObject {
     //Model
     private var die = Die()
     private var calc = Calc()
+    private var nums = SolitareNumbers()
     @Published private var dice = Dice()
     
     init() {
@@ -26,8 +27,12 @@ class DiceGame: ObservableObject {
     
     // MARK: - Access to the Model
     
-    func get(index: Int) -> Face {
+    func getFace(index: Int) -> Face {
         return dice.dice[index].dieFaceUp
+    }
+    
+    func getNum(index: Int) -> Number {
+        return nums.nums[index]
     }
     
     // MARK: - Actions (Intents)
@@ -36,11 +41,18 @@ class DiceGame: ObservableObject {
         dice.dice[index].selectUnselect()
     }
     
-    func getColor(index: Int) -> Color {
+    func getColorDie(index: Int) -> Color {
         if (dice.dice[index].selected) {
             return Color.orange
         }
         return Color.white
+    }
+    
+    func getColorNum(index: Int) -> Color {
+        if (nums.nums[index].isChosen) {
+            return Color.orange
+        }
+        return Color.black
     }
     
     func rollAll() {
@@ -51,8 +63,23 @@ class DiceGame: ObservableObject {
     
     func rollDice() {
         if (dice.howManySelected() == 2) {
-            print(calc.addSelectedDice(dice: dice))
-            rollAll()
+            let calcNum = String(calc.addSelectedDice(dice: dice))
+            let index = nums.getIndex(name: calcNum)
+            if (!nums.nums[index].isChosen){
+                nums.nums[index].choose()
+                rollAll()
+            }
         }
+    }
+    
+    func noMoves() -> Bool {
+        return !calc.haveMovesLeft(nums: nums, dice: dice)
+    }
+    
+    func allSelected() -> Bool {
+        if (dice.howManySelected() >= 11) {
+            return true
+        }
+        return false
     }
 }

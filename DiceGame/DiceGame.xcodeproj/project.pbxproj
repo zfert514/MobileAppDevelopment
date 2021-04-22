@@ -10,6 +10,8 @@
 		8178A1C225FEF67A00359993 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8178A1C125FEF67A00359993 /* Die.swift */; };
 		8178A1C525FEF7B800359993 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8178A1C425FEF7B800359993 /* Face.swift */; };
 		8178A1C825FEF9C500359993 /* DiceGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8178A1C725FEF9C500359993 /* DiceGame.swift */; };
+		817F6BF626002BD60069AA4B /* SolitareNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F6BF526002BD60069AA4B /* SolitareNumbers.swift */; };
+		817F6BF926002C850069AA4B /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F6BF826002C850069AA4B /* Number.swift */; };
 		81D2415D25F146D20021BB7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D2415C25F146D20021BB7F /* AppDelegate.swift */; };
 		81D2415F25F146D20021BB7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D2415E25F146D20021BB7F /* SceneDelegate.swift */; };
 		81D2416125F146D20021BB7F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D2416025F146D20021BB7F /* ContentView.swift */; };
@@ -24,6 +26,8 @@
 		8178A1C125FEF67A00359993 /* Die.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
 		8178A1C425FEF7B800359993 /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
 		8178A1C725FEF9C500359993 /* DiceGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceGame.swift; sourceTree = "<group>"; };
+		817F6BF526002BD60069AA4B /* SolitareNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolitareNumbers.swift; sourceTree = "<group>"; };
+		817F6BF826002C850069AA4B /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
 		81D2415925F146D20021BB7F /* DiceGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiceGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D2415C25F146D20021BB7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81D2415E25F146D20021BB7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 				81D2416025F146D20021BB7F /* ContentView.swift */,
 				8178A1C125FEF67A00359993 /* Die.swift */,
 				8178A1C725FEF9C500359993 /* DiceGame.swift */,
+				817F6BF526002BD60069AA4B /* SolitareNumbers.swift */,
+				817F6BF826002C850069AA4B /* Number.swift */,
 				81DDA50225FF09C3003FB966 /* Calculations.swift */,
 				81DDA4FF25FEFD99003FB966 /* Dice.swift */,
 				8178A1C425FEF7B800359993 /* Face.swift */,
@@ -161,11 +167,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				817F6BF926002C850069AA4B /* Number.swift in Sources */,
 				8178A1C825FEF9C500359993 /* DiceGame.swift in Sources */,
 				81DDA50025FEFD99003FB966 /* Dice.swift in Sources */,
 				81D2415D25F146D20021BB7F /* AppDelegate.swift in Sources */,
 				81D2415F25F146D20021BB7F /* SceneDelegate.swift in Sources */,
 				8178A1C525FEF7B800359993 /* Face.swift in Sources */,
+				817F6BF626002BD60069AA4B /* SolitareNumbers.swift in Sources */,
 				8178A1C225FEF67A00359993 /* Die.swift in Sources */,
 				81D2416125F146D20021BB7F /* ContentView.swift in Sources */,
 				81DDA50325FF09C3003FB966 /* Calculations.swift in Sources */,

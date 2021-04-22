@@ -1,0 +1,35 @@
+//
+//  GameView.swift
+//  Ships
+//
+//  Created by Joel Hollingsworth on 4/4/21.
+//
+
+import SwiftUI
+import SpriteKit
+
+struct GameView: View {
+    
+    @ObservedObject var manager: GameManager
+    
+    var gameScene: SKScene {
+        let scene = manager.getCurrent()
+        scene.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        scene.scaleMode = .fill
+        return scene
+    }
+    
+    let timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { timer in
+        print("fuck dude")
+    }
+    
+    var body: some View {
+        SpriteView(scene: gameScene)
+    }
+}
+
+struct GameView_Previews: PreviewProvider {
+    static var previews: some View {
+        GameView(manager: GameManager())
+    }
+}
