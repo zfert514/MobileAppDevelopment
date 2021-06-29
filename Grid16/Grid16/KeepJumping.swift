@@ -9,6 +9,8 @@ import SpriteKit
 
 class KeepJumping: GameBase {
     
+    var started = false
+    
     var js = JumpingStick()
     
     var holdTime = 0.0
@@ -21,22 +23,25 @@ class KeepJumping: GameBase {
     var gameLabel = SKLabelNode(text: "Keep Jumping")
     
     override func didMove(to view: SKView) {
-        // enable the FPS label
-        view.showsFPS = true
-        let player = js.rect
-        
-        //physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
-        //self.physicsWorld.speed = 0 for paused and more than 1 for fast
-        //self.paused
-        physicsWorld.contactDelegate = self
-        
-        gameLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 40)
-        addChild(gameLabel)
-        
-        player.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(player)
-        
-        makeGround()
+        if !started {
+            // enable the FPS label
+            view.showsFPS = true
+            let player = js.rect
+            
+            //physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            //self.physicsWorld.speed = 0 for paused and more than 1 for fast
+            //self.paused
+            physicsWorld.contactDelegate = self
+            
+            gameLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 40)
+            addChild(gameLabel)
+            
+            player.position = CGPoint(x: frame.midX, y: frame.midY)
+            addChild(player)
+            
+            makeGround()
+            started = true
+        }
     }
     
     func makeGround() {
@@ -70,10 +75,10 @@ class KeepJumping: GameBase {
         ball.fillColor = .red
         ball.strokeColor = .white
         ball.position.x = frame.minX
-        ball.position.y = frame.midY-35
+        ball.position.y = frame.midY
         
         ball.physicsBody = SKPhysicsBody(circleOfRadius: 20)
-        ball.physicsBody?.affectedByGravity = false
+        //ball.physicsBody?.affectedByGravity = false
         ball.physicsBody?.contactTestBitMask = ball.physicsBody?.collisionBitMask ?? 0
         ball.name = "ball"
         
@@ -139,7 +144,7 @@ class KeepJumping: GameBase {
         //add balls every 4 seconds
         if (ballTime == 0.0) {
             ballTime = currentTime
-        } else if (ballTime != 0.0 && ballTime + spawnTime/worldSpeed < currentTime) {
+        } else if (ballTime != 0.0 && ballTime + spawnTime/Double(self.physicsWorld.speed) < currentTime) {
             makeBall()
             ballTime = currentTime
             spawnTime = Double.random(in: 1...4)

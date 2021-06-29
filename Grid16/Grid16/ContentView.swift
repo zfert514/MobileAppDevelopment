@@ -6,15 +6,34 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct ContentView: View {
+    
+    @State private var isGameSceneShowing = false
+    
     var body: some View {
-        /*
-         * Skipping straight to the GameView.
-         * Could replace this with a menu UI that
-         * eventually leads to the GameView.
-         */
-        GameView(manager: GameManager())
+        VStack {
+            Text("Quick9")
+                .fontWeight(.heavy)
+                .font(.largeTitle)
+            Text("HighScore: \(UserDefaults.standard.integer(forKey: "HighScore"))")
+                .font(.subheadline)
+                .padding()
+            Text("Play")
+                .onTapGesture {
+                    toggleBool()
+                }
+            //            Text("Info")
+            //            Text("Credits")
+        }
+        .fullScreenCover(isPresented: $isGameSceneShowing, content: {
+            GameView(manager: GameManager())
+        })
+    }
+    
+    func toggleBool() {
+        isGameSceneShowing.toggle()
     }
 }
 

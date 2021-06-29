@@ -14,13 +14,10 @@ struct GameView: View {
     
     var gameScene: SKScene {
         let scene = manager.getCurrent()
+        //let scene = ShootLines()
         scene.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         scene.scaleMode = .fill
         return scene
-    }
-    
-    let timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { timer in
-        print("fuck dude")
     }
     
     var body: some View {

@@ -9,6 +9,8 @@ import SpriteKit
 
 class KeepFalling: GameBase {
     
+    var started = false
+    
     var fb = FallingBall()
     
     var platTime = 0.0
@@ -24,24 +26,29 @@ class KeepFalling: GameBase {
     var gameLabel = SKLabelNode(text: "Keep Falling")
     
     override func didMove(to view: SKView) {
-        // enable the FPS label
-        view.showsFPS = true
-        let player = fb.circ
-        
-        self.backgroundColor = .purple
-        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
-        self.physicsWorld.speed = CGFloat(worldSpeed)
-        //self.paused
-        physicsWorld.contactDelegate = self
-        
-        gameLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 40)
-        addChild(gameLabel)
-        
-        player.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(player)
-        
-        makeCeil()
-        makePlatforms()
+        if !started {
+            // enable the FPS label
+            view.showsFPS = true
+            let player = fb.circ
+            
+            self.backgroundColor = .purple
+            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            self.physicsWorld.speed = CGFloat(worldSpeed)
+            //self.paused
+            physicsWorld.contactDelegate = self
+            
+            gameLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 40)
+            addChild(gameLabel)
+            
+            player.position = CGPoint(x: frame.midX, y: frame.midY)
+            addChild(player)
+            
+            makeCeil()
+            makePlatforms()
+            started = true
+        }
+        print("Scene Speed: ", self.physicsWorld.speed)
+        currentTouches.removeAll()
     }
     
     func makeCeil() {

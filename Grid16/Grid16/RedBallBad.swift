@@ -1,66 +1,63 @@
 //
-//  HitTheBall.swift
+//  RedBallBad.swift
 //  Grid16
 //
-//  Created by Zachary Fertig on 4/16/21.
+//  Created by Zachary Fertig on 4/27/21.
 //
 
 import SpriteKit
 
-class HitTheBall: GameBase {
+class RedBallBad: GameBase {
     
     var started = false
     
-    var pp = PongPaddle()
+    var sa = SpinningArm()
+    var ab = ArmBall()
     
-    var gameLabel = SKLabelNode(text: "Hit The Ball")
+    let ball = SKShapeNode(circleOfRadius: 15)
     
     var currentTouches = Set<UITouch>()
+    
+    var gameLabel = SKLabelNode(text: "Red Ball Bad")
     
     override func didMove(to view: SKView) {
         if !started {
             // enable the FPS label
             view.showsFPS = true
-            let player = pp.rect
+            let arm = sa.rect
+            let cap = sa.circ
+            let player = ab.circ
             
-            self.backgroundColor = .blue
+            self.backgroundColor = .gray
             physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
-            physicsBody?.friction = 0
+            self.physicsWorld.speed = CGFloat(worldSpeed)
             physicsWorld.gravity = .zero
+            //self.paused
+            
             physicsWorld.contactDelegate = self
             
             gameLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 40)
             addChild(gameLabel)
             
-            player.position = CGPoint(x: frame.midX, y: frame.minY + 60)
+            player.position = CGPoint(x: frame.midX-CGFloat(sa.width-10), y: frame.midY)
             addChild(player)
             
-            makeGround()
-            makeBall()
+            cap.position = CGPoint(x: frame.midX-CGFloat(sa.width), y: frame.midY-CGFloat(sa.height/4))
+            addChild(cap)
             
+            arm.position = CGPoint(x: frame.midX, y: frame.midY)
+            
+            cap.move(toParent: arm)
+            player.move(toParent: arm)
+            
+            addChild(arm)
+            
+            makeBall()
+            makeCenter()
             started = true
         }
         print("Scene Speed: ", self.physicsWorld.speed)
         currentTouches.removeAll()
-    }
-    
-    func makeGround() {
-        
-        let ground = SKShapeNode(rectOf: CGSize(width: frame.maxX, height: 5))
-        ground.fillColor = .blue
-        ground.strokeColor = .blue
-        ground.glowWidth = 1.0
-        
-        ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.maxX, height: 5))
-        ground.physicsBody?.isDynamic = false
-        ground.physicsBody?.contactTestBitMask = 0b0000
-        ground.physicsBody?.collisionBitMask = 0b0001
-        ground.physicsBody?.friction = 0
-        ground.alpha = 0.0
-        ground.name = "ground"
-        
-        ground.position = CGPoint(x: frame.midX, y: frame.minY)
-        addChild(ground)
     }
     
     func makeOverlay() {
@@ -75,24 +72,40 @@ class HitTheBall: GameBase {
     }
     
     func makeBall() {
-        let ball = SKShapeNode(circleOfRadius: 20)
-        ball.fillColor = .green
+        let enemy = SKShapeNode(circleOfRadius: 20)
+        enemy.fillColor = .red
+        enemy.strokeColor = .black
+        enemy.position.x = frame.midX
+        enemy.position.y = frame.minY
+        
+        enemy.physicsBody = SKPhysicsBody(circleOfRadius: 20)
+        
+        enemy.physicsBody?.restitution = 1
+        enemy.physicsBody?.friction = 0
+        enemy.physicsBody?.allowsRotation = false
+        enemy.physicsBody?.linearDamping = 0
+        enemy.physicsBody?.angularDamping = 0
+    
+        enemy.physicsBody?.contactTestBitMask = 0b0001
+        enemy.physicsBody?.collisionBitMask = 0b0001
+        enemy.name = "enemy"
+        
+        enemy.physicsBody?.velocity = CGVector(dx: 0, dy: 300)
+        
+        addChild(enemy)
+    }
+    
+    func makeCenter() {
+        ball.fillColor = .gray
         ball.strokeColor = .white
         ball.position.x = frame.midX
         ball.position.y = frame.midY
         
-        ball.physicsBody = SKPhysicsBody(circleOfRadius: 20)
-        
-        ball.physicsBody?.restitution = 1
-        ball.physicsBody?.friction = 0
-        ball.physicsBody?.allowsRotation = false
-        ball.physicsBody?.linearDamping = 0
-        ball.physicsBody?.angularDamping = 0
-        
-        ball.physicsBody?.contactTestBitMask = ball.physicsBody?.collisionBitMask ?? 0
-        ball.name = "ball"
-        
-        ball.physicsBody?.velocity = CGVector(dx: Double.random(in: -500...500), dy: 450)
+        ball.physicsBody = SKPhysicsBody(circleOfRadius: 15)
+        ball.physicsBody?.isDynamic = false
+        ball.physicsBody?.contactTestBitMask = 0b0001
+        ball.physicsBody?.collisionBitMask = 0b0001
+        ball.name = "center"
         
         addChild(ball)
     }
@@ -110,11 +123,11 @@ class HitTheBall: GameBase {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         
-        if nodeA.name == "ball" && nodeB.name == "ground" {
+        if nodeA.name == "enemy" && nodeB.name == "player" {
             nodeA.physicsBody?.isDynamic = false
             nodeB.physicsBody?.isDynamic = false
             lose()
-        } else if nodeA.name == "ground" && nodeB.name == "ball" {
+        } else if nodeA.name == "player" && nodeB.name == "enemy" {
             nodeA.physicsBody?.isDynamic = false
             nodeB.physicsBody?.isDynamic = false
             lose()
@@ -136,19 +149,14 @@ class HitTheBall: GameBase {
     override func update(_ currentTime: TimeInterval) {
         if lost { return }
         
-        if pp.rect.position.x < frame.minX {
-            pp.rect.position.x = frame.minX
-        }
-        if pp.rect.position.x > frame.maxX {
-            pp.rect.position.x = frame.maxX
-        }
+        //sa.changeSpeed(worldSpeed: worldSpeed)
         
         //touch control
         for touch in currentTouches {
             if touch.location(in: self).x < frame.midX {
-                pp.moveLeft()
+                ab.moveLeft(pos: sa.circ)
             } else {
-                pp.moveRight()
+                ab.moveRight(pos: sa.circ)
             }
         }
     }

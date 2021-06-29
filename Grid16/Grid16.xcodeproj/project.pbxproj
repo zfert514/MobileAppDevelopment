@@ -9,9 +9,14 @@
 /* Begin PBXBuildFile section */
 		8143BE83262A2CF6008CF8A1 /* KeepFalling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8143BE82262A2CF6008CF8A1 /* KeepFalling.swift */; };
 		8143BE86262A2D62008CF8A1 /* FallingBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8143BE85262A2D62008CF8A1 /* FallingBall.swift */; };
-		8143BE89262B6DDE008CF8A1 /* Grid16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8143BE88262B6DDE008CF8A1 /* Grid16.swift */; };
 		81467B6B262BEEFF004E376B /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81467B6A262BEEFF004E376B /* GameManager.swift */; };
 		81467B6E262C01EA004E376B /* GameBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81467B6D262C01EA004E376B /* GameBase.swift */; };
+		814834DC264869F000AE9D54 /* ShieldCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814834DB264869F000AE9D54 /* ShieldCenter.swift */; };
+		814834E126486A0900AE9D54 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814834E026486A0900AE9D54 /* Shield.swift */; };
+		814834E62648877300AE9D54 /* MatchArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814834E52648877300AE9D54 /* MatchArrows.swift */; };
+		814834E92648878500AE9D54 /* PlayerArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814834E82648878500AE9D54 /* PlayerArrow.swift */; };
+		814834ED2648B33F00AE9D54 /* ShootBoxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814834EC2648B33F00AE9D54 /* ShootBoxes.swift */; };
+		814834F32648B39100AE9D54 /* PlayerBoxShooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814834F22648B39100AE9D54 /* PlayerBoxShooter.swift */; };
 		81578DDB2628BFC700F1B9C8 /* Grid16App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81578DDA2628BFC700F1B9C8 /* Grid16App.swift */; };
 		81578DDD2628BFC700F1B9C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81578DDC2628BFC700F1B9C8 /* ContentView.swift */; };
 		81578DDF2628BFC800F1B9C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81578DDE2628BFC800F1B9C8 /* Assets.xcassets */; };
@@ -21,14 +26,31 @@
 		81578DF52628C4CD00F1B9C8 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81578DF42628C4CD00F1B9C8 /* GameView.swift */; };
 		81578DF9262965BA00F1B9C8 /* HitTheBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81578DF8262965BA00F1B9C8 /* HitTheBall.swift */; };
 		81578E00262968DC00F1B9C8 /* PongPaddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81578DFF262968DC00F1B9C8 /* PongPaddle.swift */; };
+		815B6D72264B118D00C2DCA0 /* IntermediaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B6D71264B118D00C2DCA0 /* IntermediaryScene.swift */; };
+		815B6D76264B11D600C2DCA0 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B6D75264B11D600C2DCA0 /* Score.swift */; };
+		815B6D7D264B123300C2DCA0 /* MinigameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B6D7C264B123300C2DCA0 /* MinigameInfo.swift */; };
+		815B6D86264B35FE00C2DCA0 /* ShootLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B6D85264B35FE00C2DCA0 /* ShootLines.swift */; };
+		815B6D89264B364100C2DCA0 /* LineShooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B6D88264B364100C2DCA0 /* LineShooter.swift */; };
+		815D081826389EE10066C94A /* RedBallBad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815D081726389EE10066C94A /* RedBallBad.swift */; };
+		815D081C2638A2190066C94A /* SpinningArm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815D081B2638A2190066C94A /* SpinningArm.swift */; };
+		815D081F2638A5280066C94A /* ArmBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815D081E2638A5280066C94A /* ArmBall.swift */; };
+		815D0823263910D70066C94A /* AvoidGreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815D0822263910D70066C94A /* AvoidGreen.swift */; };
+		815D08272639110F0066C94A /* PlayerBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815D08262639110F0066C94A /* PlayerBall.swift */; };
+		815E722126472B00007DD2DD /* KeepItIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E722026472B00007DD2DD /* KeepItIn.swift */; };
+		815E722426472B10007DD2DD /* BoxPaddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E722326472B10007DD2DD /* BoxPaddle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8143BE82262A2CF6008CF8A1 /* KeepFalling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepFalling.swift; sourceTree = "<group>"; };
 		8143BE85262A2D62008CF8A1 /* FallingBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallingBall.swift; sourceTree = "<group>"; };
-		8143BE88262B6DDE008CF8A1 /* Grid16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid16.swift; sourceTree = "<group>"; };
 		81467B6A262BEEFF004E376B /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		81467B6D262C01EA004E376B /* GameBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBase.swift; sourceTree = "<group>"; };
+		814834DB264869F000AE9D54 /* ShieldCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldCenter.swift; sourceTree = "<group>"; };
+		814834E026486A0900AE9D54 /* Shield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shield.swift; sourceTree = "<group>"; };
+		814834E52648877300AE9D54 /* MatchArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchArrows.swift; sourceTree = "<group>"; };
+		814834E82648878500AE9D54 /* PlayerArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerArrow.swift; sourceTree = "<group>"; };
+		814834EC2648B33F00AE9D54 /* ShootBoxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootBoxes.swift; sourceTree = "<group>"; };
+		814834F22648B39100AE9D54 /* PlayerBoxShooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBoxShooter.swift; sourceTree = "<group>"; };
 		81578DD72628BFC700F1B9C8 /* Grid16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grid16.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81578DDA2628BFC700F1B9C8 /* Grid16App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid16App.swift; sourceTree = "<group>"; };
 		81578DDC2628BFC700F1B9C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +62,18 @@
 		81578DF42628C4CD00F1B9C8 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		81578DF8262965BA00F1B9C8 /* HitTheBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitTheBall.swift; sourceTree = "<group>"; };
 		81578DFF262968DC00F1B9C8 /* PongPaddle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongPaddle.swift; sourceTree = "<group>"; };
+		815B6D71264B118D00C2DCA0 /* IntermediaryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediaryScene.swift; sourceTree = "<group>"; };
+		815B6D75264B11D600C2DCA0 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		815B6D7C264B123300C2DCA0 /* MinigameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinigameInfo.swift; sourceTree = "<group>"; };
+		815B6D85264B35FE00C2DCA0 /* ShootLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootLines.swift; sourceTree = "<group>"; };
+		815B6D88264B364100C2DCA0 /* LineShooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineShooter.swift; sourceTree = "<group>"; };
+		815D081726389EE10066C94A /* RedBallBad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBallBad.swift; sourceTree = "<group>"; };
+		815D081B2638A2190066C94A /* SpinningArm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningArm.swift; sourceTree = "<group>"; };
+		815D081E2638A5280066C94A /* ArmBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmBall.swift; sourceTree = "<group>"; };
+		815D0822263910D70066C94A /* AvoidGreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvoidGreen.swift; sourceTree = "<group>"; };
+		815D08262639110F0066C94A /* PlayerBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBall.swift; sourceTree = "<group>"; };
+		815E722026472B00007DD2DD /* KeepItIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepItIn.swift; sourceTree = "<group>"; };
+		815E722326472B10007DD2DD /* BoxPaddle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxPaddle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +96,33 @@
 			path = KeepFalling;
 			sourceTree = "<group>";
 		};
+		814834DA264869D600AE9D54 /* ShieldCenter */ = {
+			isa = PBXGroup;
+			children = (
+				814834DB264869F000AE9D54 /* ShieldCenter.swift */,
+				814834E026486A0900AE9D54 /* Shield.swift */,
+			);
+			path = ShieldCenter;
+			sourceTree = "<group>";
+		};
+		814834E4264886A800AE9D54 /* MatchArrows */ = {
+			isa = PBXGroup;
+			children = (
+				814834E52648877300AE9D54 /* MatchArrows.swift */,
+				814834E82648878500AE9D54 /* PlayerArrow.swift */,
+			);
+			name = MatchArrows;
+			sourceTree = "<group>";
+		};
+		814834EB2648B32300AE9D54 /* ShootBoxes */ = {
+			isa = PBXGroup;
+			children = (
+				814834EC2648B33F00AE9D54 /* ShootBoxes.swift */,
+				814834F22648B39100AE9D54 /* PlayerBoxShooter.swift */,
+			);
+			path = ShootBoxes;
+			sourceTree = "<group>";
+		};
 		81578DCE2628BFC700F1B9C8 = {
 			isa = PBXGroup;
 			children = (
@@ -81,15 +142,9 @@
 		81578DD92628BFC700F1B9C8 /* Grid16 */ = {
 			isa = PBXGroup;
 			children = (
-				81467B6A262BEEFF004E376B /* GameManager.swift */,
-				81467B6D262C01EA004E376B /* GameBase.swift */,
-				8143BE81262A2C91008CF8A1 /* KeepFalling */,
-				81578DFD262965C100F1B9C8 /* HitTheBall */,
-				81578DF72629653E00F1B9C8 /* KeepJumping */,
-				81578DDA2628BFC700F1B9C8 /* Grid16App.swift */,
-				81578DDC2628BFC700F1B9C8 /* ContentView.swift */,
-				81578DF42628C4CD00F1B9C8 /* GameView.swift */,
-				8143BE88262B6DDE008CF8A1 /* Grid16.swift */,
+				815B6D8C264B374700C2DCA0 /* Controllers */,
+				815B6D8B264B372E00C2DCA0 /* MiniGames */,
+				815B6D74264B119E00C2DCA0 /* DispayScenes */,
 				81578DDE2628BFC800F1B9C8 /* Assets.xcassets */,
 				81578DE32628BFC800F1B9C8 /* Info.plist */,
 				81578DE02628BFC800F1B9C8 /* Preview Content */,
@@ -121,6 +176,82 @@
 				81578DFF262968DC00F1B9C8 /* PongPaddle.swift */,
 			);
 			name = HitTheBall;
+			sourceTree = "<group>";
+		};
+		815B6D74264B119E00C2DCA0 /* DispayScenes */ = {
+			isa = PBXGroup;
+			children = (
+				81578DDC2628BFC700F1B9C8 /* ContentView.swift */,
+				815B6D71264B118D00C2DCA0 /* IntermediaryScene.swift */,
+				815B6D75264B11D600C2DCA0 /* Score.swift */,
+				815B6D7C264B123300C2DCA0 /* MinigameInfo.swift */,
+			);
+			name = DispayScenes;
+			sourceTree = "<group>";
+		};
+		815B6D83264B357B00C2DCA0 /* ShootLines */ = {
+			isa = PBXGroup;
+			children = (
+				815B6D85264B35FE00C2DCA0 /* ShootLines.swift */,
+				815B6D88264B364100C2DCA0 /* LineShooter.swift */,
+			);
+			path = ShootLines;
+			sourceTree = "<group>";
+		};
+		815B6D8B264B372E00C2DCA0 /* MiniGames */ = {
+			isa = PBXGroup;
+			children = (
+				81578DF72629653E00F1B9C8 /* KeepJumping */,
+				815B6D83264B357B00C2DCA0 /* ShootLines */,
+				814834EB2648B32300AE9D54 /* ShootBoxes */,
+				815D081226389DE10066C94A /* RedBallBad */,
+				815D0821263910B90066C94A /* AvoidGreen */,
+				814834E4264886A800AE9D54 /* MatchArrows */,
+				814834DA264869D600AE9D54 /* ShieldCenter */,
+				8143BE81262A2C91008CF8A1 /* KeepFalling */,
+				81578DFD262965C100F1B9C8 /* HitTheBall */,
+				815E721F26472A23007DD2DD /* KeepItIn */,
+			);
+			name = MiniGames;
+			sourceTree = "<group>";
+		};
+		815B6D8C264B374700C2DCA0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				81467B6A262BEEFF004E376B /* GameManager.swift */,
+				81467B6D262C01EA004E376B /* GameBase.swift */,
+				81578DF42628C4CD00F1B9C8 /* GameView.swift */,
+				81578DDA2628BFC700F1B9C8 /* Grid16App.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		815D081226389DE10066C94A /* RedBallBad */ = {
+			isa = PBXGroup;
+			children = (
+				815D081726389EE10066C94A /* RedBallBad.swift */,
+				815D081B2638A2190066C94A /* SpinningArm.swift */,
+				815D081E2638A5280066C94A /* ArmBall.swift */,
+			);
+			name = RedBallBad;
+			sourceTree = "<group>";
+		};
+		815D0821263910B90066C94A /* AvoidGreen */ = {
+			isa = PBXGroup;
+			children = (
+				815D0822263910D70066C94A /* AvoidGreen.swift */,
+				815D08262639110F0066C94A /* PlayerBall.swift */,
+			);
+			path = AvoidGreen;
+			sourceTree = "<group>";
+		};
+		815E721F26472A23007DD2DD /* KeepItIn */ = {
+			isa = PBXGroup;
+			children = (
+				815E722026472B00007DD2DD /* KeepItIn.swift */,
+				815E722326472B10007DD2DD /* BoxPaddle.swift */,
+			);
+			name = KeepItIn;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,18 +323,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				815D081C2638A2190066C94A /* SpinningArm.swift in Sources */,
 				81578DDD2628BFC700F1B9C8 /* ContentView.swift in Sources */,
+				815E722126472B00007DD2DD /* KeepItIn.swift in Sources */,
+				814834DC264869F000AE9D54 /* ShieldCenter.swift in Sources */,
 				81578DF22628C30400F1B9C8 /* JumpingStick.swift in Sources */,
 				81467B6E262C01EA004E376B /* GameBase.swift in Sources */,
-				8143BE89262B6DDE008CF8A1 /* Grid16.swift in Sources */,
+				815B6D89264B364100C2DCA0 /* LineShooter.swift in Sources */,
 				81467B6B262BEEFF004E376B /* GameManager.swift in Sources */,
 				81578E00262968DC00F1B9C8 /* PongPaddle.swift in Sources */,
+				815D081F2638A5280066C94A /* ArmBall.swift in Sources */,
+				815D08272639110F0066C94A /* PlayerBall.swift in Sources */,
+				815D081826389EE10066C94A /* RedBallBad.swift in Sources */,
 				81578DF9262965BA00F1B9C8 /* HitTheBall.swift in Sources */,
+				815B6D76264B11D600C2DCA0 /* Score.swift in Sources */,
+				814834E62648877300AE9D54 /* MatchArrows.swift in Sources */,
 				81578DDB2628BFC700F1B9C8 /* Grid16App.swift in Sources */,
+				815B6D86264B35FE00C2DCA0 /* ShootLines.swift in Sources */,
 				81578DEF2628C2C500F1B9C8 /* KeepJumping.swift in Sources */,
+				815E722426472B10007DD2DD /* BoxPaddle.swift in Sources */,
+				814834ED2648B33F00AE9D54 /* ShootBoxes.swift in Sources */,
 				8143BE86262A2D62008CF8A1 /* FallingBall.swift in Sources */,
 				8143BE83262A2CF6008CF8A1 /* KeepFalling.swift in Sources */,
 				81578DF52628C4CD00F1B9C8 /* GameView.swift in Sources */,
+				815B6D7D264B123300C2DCA0 /* MinigameInfo.swift in Sources */,
+				814834E126486A0900AE9D54 /* Shield.swift in Sources */,
+				815B6D72264B118D00C2DCA0 /* IntermediaryScene.swift in Sources */,
+				814834F32648B39100AE9D54 /* PlayerBoxShooter.swift in Sources */,
+				815D0823263910D70066C94A /* AvoidGreen.swift in Sources */,
+				814834E92648878500AE9D54 /* PlayerArrow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +481,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Grid16/Preview Content\"";
+				DEVELOPMENT_TEAM = TY4X6T9VPB;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Grid16/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -354,6 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Grid16/Preview Content\"";
+				DEVELOPMENT_TEAM = TY4X6T9VPB;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Grid16/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
