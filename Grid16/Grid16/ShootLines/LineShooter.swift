@@ -13,7 +13,9 @@ class LineShooter: SKShapeNode {
     
     let width = 15
     
-    let shootTime = 0.5
+    let shootTime = 0.2
+	
+	var facing = "left"
     
     let circ = SKShapeNode(circleOfRadius: CGFloat(20))
     
@@ -47,20 +49,35 @@ class LineShooter: SKShapeNode {
         box.physicsBody?.contactTestBitMask = 0b0000
         box.physicsBody?.collisionBitMask = 0b0000
         box.physicsBody?.allowsRotation = false
-        box.position = CGPoint(x: circ.position.x, y: circ.position.y+CGFloat(2*radius))
-        box.physicsBody?.velocity = CGVector(dx: 0, dy: 300)
+		
+		if facing == "left"{
+			box.position = CGPoint(x: circ.position.x-CGFloat(2*radius), y: circ.position.y)
+			box.physicsBody?.velocity = CGVector(dx: -300, dy: 0)
+		} else {
+			box.position = CGPoint(x: circ.position.x+CGFloat(2*radius), y: circ.position.y)
+			box.physicsBody?.velocity = CGVector(dx: 300, dy: 0)
+		}
+		
         box.name = "bullet"
         
         return box
     }
     
-    func moveLeft() {
-        let action = SKAction.move(by: CGVector(dx: -10, dy: 0), duration: 0.25)
+    func moveUp() {
+        let action = SKAction.move(by: CGVector(dx: 0, dy: 10), duration: 0.25)
         circ.run(action)
     }
     
-    func moveRight() {
-        let action = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.25)
+    func moveDown() {
+        let action = SKAction.move(by: CGVector(dx: 0, dy: -10), duration: 0.25)
         circ.run(action)
     }
+	
+	func turnLeft() {
+		facing = "left"
+	}
+	
+	func turnRight() {
+		facing = "right"
+	}
 }

@@ -11,7 +11,7 @@ class ShootLines: GameBase {
     
     var started = false
     
-    var pbs = PlayerBoxShooter()
+    var ls = LineShooter()
     
     var currentTouches = Set<UITouch>()
     
@@ -19,15 +19,15 @@ class ShootLines: GameBase {
     var spawnTime = 1.0
     var bulletTime = 0.0
     
-    let boxWidth = 100
+    let lineHeight = 10
     
-    var gameLabel = SKLabelNode(text: "Don't Shoot Boxes")
+    var gameLabel = SKLabelNode(text: "Shoot Lines")
     
     override func didMove(to view: SKView) {
         if !started {
             // enable the FPS label
             view.showsFPS = true
-            let player = pbs.circ
+            let player = ls.circ
             
             self.backgroundColor = .cyan
             //physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
@@ -39,32 +39,31 @@ class ShootLines: GameBase {
             gameLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 40)
             addChild(gameLabel)
             
-            player.position = CGPoint(x: frame.midX, y: frame.minY + CGFloat(2*pbs.radius))
+            player.position = CGPoint(x: frame.midX, y: frame.midY)
             addChild(player)
             
-            //makeGround()
+            makeMiddle()
             started = true
         }
         print("Scene Speed: ", self.physicsWorld.speed)
         currentTouches.removeAll()
     }
     
-    func makeGround() {
-        let ground = SKShapeNode(rectOf: CGSize(width: frame.maxX, height: 5))
-        ground.fillColor = .blue
-        ground.strokeColor = .blue
-        ground.glowWidth = 1.0
+    func makeMiddle() {
+        let middle = SKShapeNode(rectOf: CGSize(width: frame.maxX, height: 5))
+        middle.fillColor = .blue
+        middle.strokeColor = .blue
+        middle.glowWidth = 1.0
         
-        ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.maxX, height: 5))
-        ground.physicsBody?.isDynamic = false
-        ground.physicsBody?.contactTestBitMask = 0b0001
-        ground.physicsBody?.collisionBitMask = 0b0001
-        ground.physicsBody?.friction = 0
-        ground.alpha = 0.0
-        ground.name = "ground"
+		middle.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 5, height: frame.maxY))
+        middle.physicsBody?.isDynamic = false
+        middle.physicsBody?.contactTestBitMask = 0b0001
+        middle.physicsBody?.collisionBitMask = 0b0001
+        middle.physicsBody?.friction = 0
+        middle.name = "middle"
         
-        ground.position = CGPoint(x: frame.midX, y: frame.minY)
-        addChild(ground)
+        middle.position = CGPoint(x: frame.midX, y: frame.minY)
+        addChild(middle)
     }
     
     func makeOverlay() {
@@ -78,28 +77,36 @@ class ShootLines: GameBase {
         addChild(over)
     }
     
-    func makeBox() -> SKShapeNode{
-        let box = SKShapeNode(rectOf: CGSize(width: boxWidth, height: boxWidth))
-        box.fillColor = .red
-        box.strokeColor = .white
-        box.position.x = CGFloat.random(in: frame.minX+CGFloat(boxWidth/2)...frame.maxX-CGFloat(boxWidth/2))
-        box.position.y = frame.maxY
+    func makeLine() -> SKShapeNode{
+        let line = SKShapeNode(rectOf: CGSize(width: lineHeight, height: lineHeight))
+        line.fillColor = .red
+        line.strokeColor = .white
         
-        box.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: boxWidth, height: boxWidth))
+        line.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: lineHeight, height: lineHeight))
         //box.physicsBody?.affectedByGravity = false
-        box.physicsBody?.contactTestBitMask = box.physicsBody?.collisionBitMask ?? 0
-        box.name = "box"
+        line.physicsBody?.contactTestBitMask = line.physicsBody?.collisionBitMask ?? 0
+        line.name = "line"
         
-        box.physicsBody?.velocity = CGVector(dx: 0, dy: -300)
+		let left = 0
+		
+		if Int.random(in: 0...1) == left {
+			line.position.x = frame.minX
+			line.physicsBody?.velocity = CGVector(dx: 300, dy: 0)
+		} else {
+			line.position.x = frame.maxX
+			line.physicsBody?.velocity = CGVector(dx: -300, dy: 0)
+		}
+		
+		line.position.y = CGFloat.random(in: frame.minY+CGFloat(lineHeight/2)...frame.maxY-CGFloat(lineHeight/2))
         
-        return box
+        return line
     }
     
-    func split(boxOG: SKShapeNode) {
-        let box1 = makeBox()
-        let box2 = makeBox()
-        box1.position = CGPoint(x: boxOG.position.x-CGFloat(boxWidth/2), y: boxOG.position.y)
-        box2.position = CGPoint(x: boxOG.position.x+CGFloat(boxWidth/2), y: boxOG.position.y)
+    func shorten(boxOG: SKShapeNode) {
+        let box1 = makeLine()
+        let box2 = makeLine()
+        box1.position = CGPoint(x: boxOG.position.x-CGFloat(lineHeight/2), y: boxOG.position.y)
+        box2.position = CGPoint(x: boxOG.position.x+CGFloat(lineHeight/2), y: boxOG.position.y)
         box1.setScale(0.5*boxOG.xScale)
         box2.setScale(0.5*boxOG.xScale)
         addChild(box1)
@@ -119,22 +126,22 @@ class ShootLines: GameBase {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         
-        if nodeA.name == "box" && nodeB.name == "player" {
+        if nodeA.name == "line" && nodeB.name == "middle" {
             nodeA.physicsBody?.isDynamic = false
             nodeB.physicsBody?.isDynamic = false
             lose()
-        } else if nodeA.name == "player" && nodeB.name == "box" {
+        } else if nodeA.name == "middle" && nodeB.name == "line" {
             nodeA.physicsBody?.isDynamic = false
             nodeB.physicsBody?.isDynamic = false
             lose()
         }
         
-        if nodeA.name == "box" && nodeB.name == "bullet" {
-            split(boxOG: nodeA as! SKShapeNode)
+        if nodeA.name == "line" && nodeB.name == "bullet" {
+            shorten(boxOG: nodeA as! SKShapeNode)
             nodeB.removeFromParent()
             nodeA.removeFromParent()
-        } else if nodeA.name == "bullet" && nodeB.name == "box" {
-            split(boxOG: nodeB as! SKShapeNode)
+        } else if nodeA.name == "bullet" && nodeB.name == "line" {
+            shorten(boxOG: nodeB as! SKShapeNode)
             nodeB.removeFromParent()
             nodeA.removeFromParent()
         }
@@ -155,27 +162,34 @@ class ShootLines: GameBase {
     override func update(_ currentTime: TimeInterval) {
         if lost { return }
         
-        if pbs.circ.position.x < frame.minX+CGFloat(2*pbs.radius) {
-            pbs.circ.position.x = frame.minX+CGFloat(2*pbs.radius)
+        if ls.circ.position.y < frame.minY+CGFloat(2*ls.radius) {
+            ls.circ.position.y = frame.minY+CGFloat(2*ls.radius)
         }
-        if pbs.circ.position.x > frame.maxX-CGFloat(2*pbs.radius) {
-            pbs.circ.position.x = frame.maxX-CGFloat(2*pbs.radius)
+        if ls.circ.position.y > frame.maxY-CGFloat(2*ls.radius) {
+            ls.circ.position.y = frame.maxY-CGFloat(2*ls.radius)
         }
         
         //touch control
         for touch in currentTouches {
-            if touch.location(in: self).x < frame.midX {
-                pbs.moveLeft()
+            if touch.location(in: self).y < frame.midY {
+                ls.moveDown()
             } else {
-                pbs.moveRight()
+                ls.moveUp()
             }
         }
+		for touch in currentTouches {
+			if touch.location(in: self).x < frame.midX {
+				ls.turnLeft()
+			} else {
+				ls.turnRight()
+			}
+		}
         
         //add boxes
         if (boxTime == 0.0) {
             boxTime = currentTime
         } else if (boxTime != 0.0 && boxTime + spawnTime/Double(self.physicsWorld.speed) < currentTime) {
-            addChild(makeBox())
+            addChild(makeLine())
             boxTime = currentTime
             spawnTime = Double.random(in: 1...1)
         }
@@ -183,9 +197,8 @@ class ShootLines: GameBase {
         //shoot
         if (bulletTime == 0.0) {
             bulletTime = currentTime
-        } else if (bulletTime != 0.0 && bulletTime + pbs.shootTime <= currentTime) {
-            print("shoot")
-            addChild(pbs.makeBullet())
+        } else if (bulletTime != 0.0 && bulletTime + ls.shootTime <= currentTime) {
+            addChild(ls.makeBullet())
             bulletTime = currentTime
         }
     }
